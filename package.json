@@ -1,5 +1,5 @@
 {
-  "name": "todo-list",
+  "name": "TercerParcial",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   "dependencies": {
     "axios": "^0.22.0",
     "core-js": "^3.6.5",
-    "dragula": "^3.7.3",
     "vue": "^2.6.11",
     "vue-router": "^3.5.2",
     "vue-socket.io": "^3.0.10",
