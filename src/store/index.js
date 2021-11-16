@@ -5,11 +5,13 @@ Vue.use(Vuex)
 
 // Modules import
 import tasks from '@/store/modules/tasks.store';
+import Servicios from '@/store/modules/Servicios.store';
 
 export default new Vuex.Store({
 	state: {},
 	mutations: {},
 	modules: {
-		tasks: tasks
+		tasks: tasks,
+		Servicios: Servicios
 	}
 })

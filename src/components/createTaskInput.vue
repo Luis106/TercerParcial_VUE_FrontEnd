@@ -1,19 +1,14 @@
 <template>
-  <div class="add-control">
-    <div class="form-group has-feedback">
-      <input
-          v-on:keyup.enter="emitCreateTaskEvent"
-          type="text"
-          class="form-control"
-          placeholder="✍️ Add item..."
-          v-on:input="$emit('input', $event.target.value)"/>
-      <i
-          v-on:click="emitCreateTaskEvent"
-          class="fa fa-plus form-control-feedback add-btn"
-          title="Add item"
-      ></i>
+  <div class="card mb-3 cursor-grab">
+          <div class="card-body">
+            <span class="badge bg-primary text-white mb-2">{{tag}}</span>
+            <p class="mb-0">{{description}}</p>
+            <div>
+          <button type="button" v-on:click="emitChangeStatus(index)" class="btn btn-primary  btn-sm" >Modificar</button>
+          <button type="button" v-on:click="emitDelete(index, status )" class="btn btn-secondary  btn-sm">Eliminar</button>
+        </div>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>

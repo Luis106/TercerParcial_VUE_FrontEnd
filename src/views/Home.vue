@@ -177,6 +177,7 @@ name: "Home",
       ])
     },
   methods: {
+    
      async getAllTasks(){
        
         const BacklogTasks = this.$store.getters["tasks/getBacklogList"];
@@ -189,6 +190,8 @@ name: "Home",
           await this.$store.dispatch("tasks/getAllTasks");
         }
       },
+
+
       generateID() {
         const randLetter = String.fromCharCode(65 + Math.floor(Math.random() * 26));
         return randLetter + Date.now();
