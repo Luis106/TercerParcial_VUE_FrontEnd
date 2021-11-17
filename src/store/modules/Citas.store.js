@@ -32,13 +32,14 @@
 		},
 		
 		async addCita({commit}, Cita){
-			console.log(Cita)
+			console.log(Cita.usuario)
+			
 			if (Cita !== ""){
 				// add task to Citaer
 				try {
 				const response = await axios.post(
-					"http://localhost:3000/Citaicio/create",
-					{name:Cita}
+					"http://localhost:3000/Cita/create",
+					{usuario:Cita.usuario,servicio: Cita.servicio, hora: Cita.hora, ubicacion: Cita.ubicacion}
 				);
 				if (response.status !== 500) {
 					commit("CREATE_Cita", response.data)

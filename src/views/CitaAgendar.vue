@@ -51,19 +51,23 @@
 
         
        
-         this.ServList = this.$store.getters["Servicios/getListaServicios"];
-
+        this.ServList = this.$store.getters["Servicios/getListaServicios"];
 
         if (this.ServList && this.ServList.length === 0 ) {
           console.log("getAllServ")
           await this.$store.dispatch("Servicios/getAllServ");
+          this.ServList = this.$store.getters["Servicios/getListaServicios"];
         }
+
+       
         console.log(this.ServList)
       },
       async Crear(){
-        const lugar = Document.getElementById("Lugar").value
-        const Hora = Document.getElementById("Hora").value
-        console.log(lugar + Hora)
+        const lugar = document.getElementById("Lugar").value
+        const Hora = document.getElementById("Hora").value
+        const Serv = document.getElementById("TaskStatus").value
+        console.log(lugar + Hora + Serv)
+        await this.$store.dispatch("Citas/addCita", {usuario: "usuario",  servicio: Serv, hora: Hora, ubicacion: lugar} );
 
 
       }
