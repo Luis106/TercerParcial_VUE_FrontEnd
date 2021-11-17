@@ -1,19 +1,19 @@
 	import axios from "axios";
 
 	const state = {
-		ListaServicios: []
+		ListaCitas: []
 	};
 	const getters = {
 
-		getListaServicios: (state) => state.ListaServicios,
+		getListaCitas: (state) => state.ListaCitas,
 		
 	};
 	const actions = {
-		async getAllServ({commit}) {
+		async getAllCita({commit}) {
 			try {
 				
 				const response = await axios.get(
-					`http://localhost:3000/Servicio`
+					`http://localhost:3000/Cita`
 				);
 			
 
@@ -22,7 +22,7 @@
 
 				if (response.data){
 					
-					commit('SET_SERV', response.data);
+					commit('SET_CITA', response.data);
 					
 				}
 
@@ -31,17 +31,17 @@
 			}
 		},
 		
-		async addServ({commit}, Serv){
-			console.log(Serv)
-			if (Serv !== ""){
-				// add task to server
+		async addCita({commit}, Cita){
+			console.log(Cita)
+			if (Cita !== ""){
+				// add task to Citaer
 				try {
 				const response = await axios.post(
-					"http://localhost:3000/Servicio/create",
-					{name:Serv}
+					"http://localhost:3000/Citaicio/create",
+					{name:Cita}
 				);
 				if (response.status !== 500) {
-					commit("CREATE_SERV", response.data)
+					commit("CREATE_Cita", response.data)
 				
 				} else {
 					//alert("No se pudo crear la tarea")
@@ -53,20 +53,20 @@
 				}
 			}
 		},
-		async deleteServ({commit},SERV){
-			console.log(SERV.Id)
-			console.log(SERV.Index)
+		async deleteCita({commit},Cita){
+			console.log(Cita.Id)
+			console.log(Cita.Index)
 
-			if (SERV.Id !== ""){
-				// add task to server
+			if (Cita.Id !== ""){
+				// add task to Citaer
 
 				try {
 				const response = await axios.delete(
-					"http://localhost:3000/Servicio/delete",
-					{data:{_id: SERV.Id}}
+					"http://localhost:3000/Citaicio/delete",
+					{data:{_id: Cita.Id}}
 				);
 				if (response.status !== 500) {
-					commit("DELETE_SERV", SERV.Index)
+					commit("DELETE_Cita", Cita.Index)
 				
 				} else {
 					//alert("No se pudo crear la tarea")
@@ -78,24 +78,24 @@
 				}
 			}
 		},
-		async ChangeServ({commit},SERV){
-			console.log(SERV.Id)
-			console.log(SERV.Index)
-			console.log(SERV.Name)
+		async ChangeCita({commit},Cita){
+			console.log(Cita.Id)
+			console.log(Cita.Index)
+			console.log(Cita.Name)
 
-			if (SERV.Id !== ""){
-				// add task to server
+			if (Cita.Id !== ""){
+				// add task to Citaer
 
 				try {
 				const response = await axios.put(
-					"http://localhost:3000/Servicio/update",
-					{_id: SERV.Id, name:SERV.Name}
+					"http://localhost:3000/Citaicio/update",
+					{_id: Cita.Id, name:Cita.Name}
 				);
 				console.log(response.data.result)
 
 				///////El updaate no funciona actualizar el post
 				if (response.status !== 500) {
-					commit("CHANGE_SERV", {Index: SERV.Index, NewServ: response.data.result})
+					commit("CHANGE_Cita", {Index: Cita.Index, NewCita: response.data.result})
 				
 				} else {
 					//alert("No se pudo crear la tarea")
@@ -111,27 +111,27 @@
 	};
 
 	const mutations = {
-		SET_SERV(state, newServList) {
+		SET_CITA(state, newCitaList) {
 			
-			state.ListaServicios =newServList;
-			console.log(state.ListaServicios)
+			state.ListaCitas =newCitaList;
+			console.log(state.ListaCitas)
 					
 				
 		},
-		CHANGE_SERV(state, serv){
-				console.log(serv.Index)
-				console.log(serv.NewServ)
-				state.ListaServicios.splice(serv.Index, 1, serv.NewServ);
+		CHANGE_Cita(state, Cita){
+				console.log(Cita.Index)
+				console.log(Cita.NewCita)
+				state.ListaCitas.splice(Cita.Index, 1, Cita.NewCita);
 			
 		},
-		DELETE_SERV(state, index){
+		DELETE_Cita(state, index){
 			console.log(index)
-			state.ListaServicios.splice(index, 1);
+			state.ListaCitas.splice(index, 1);
 			
 		},
-		CREATE_SERV(state, serv){
-			console.log(serv.savedTask)
-			state.ListaServicios.push(serv.savedTask);
+		CREATE_Cita(state, Cita){
+			console.log(Cita.savedTask)
+			state.ListaCitas.push(Cita.savedTask);
 			
 		}
 	};

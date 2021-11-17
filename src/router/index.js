@@ -11,10 +11,10 @@ const routes = [
     component: LOGIN
   },
   {
-    path: '/HOME',
-    name: 'HOME',
+    path: '/CITA',
+    name: 'CITA',
 
-    component: () => import('../views/Home.vue')
+    component: () => import('../views/Citas.vue')
   },
   {
     path: '/Servicios',
@@ -26,13 +26,13 @@ const routes = [
     path: '/Agendar',
     name: 'Agendar',
 
-    //component: () => import('../views/Agendar.vue')
+    component: () => import('../views/CitaAgendar.vue')
   },
   {
-    path: '/Servicios_Ad',
-    name: 'Servicios_Ad',
+    path: '/VerServicios',
+    name: 'Servicios_Cli',
 
-    //component: () => import('../views/Servicios_Ad.vue')
+    component: () => import('../views/ServiciosCli.vue')
   },
   {
     path: '/Citas_Ad',
