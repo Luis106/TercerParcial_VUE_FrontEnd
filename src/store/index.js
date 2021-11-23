@@ -7,6 +7,7 @@ Vue.use(Vuex)
 import tasks from '@/store/modules/tasks.store';
 import Servicios from '@/store/modules/Servicios.store';
 import Citas from '@/store/modules/Citas.store';
+import User from '@/store/modules/User.store';
 
 export default new Vuex.Store({
 	state: {},
@@ -14,6 +15,7 @@ export default new Vuex.Store({
 	modules: {
 		tasks: tasks,
 		Servicios: Servicios,
-		Citas: Citas
+		Citas: Citas,
+		User: User
 	}
 })

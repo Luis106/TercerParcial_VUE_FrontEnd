@@ -37,7 +37,6 @@ export default {
     Hora:{
        type: String
     },
-
     index: {
       type: Number
     },

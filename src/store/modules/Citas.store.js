@@ -39,7 +39,8 @@
 				try {
 				const response = await axios.post(
 					"http://localhost:3000/Cita/create",
-					{usuario:Cita.usuario,servicio: Cita.servicio, hora: Cita.hora, ubicacion: Cita.ubicacion}
+					{usuario:Cita.usuario,servicio: Cita.servicio, hora: Cita.hora, ubicacion: Cita.ubicacion},
+					{headers: { Authorization: `Bearer ${Cita.token}` }}
 				);
 				if (response.status !== 500) {
 					commit("CREATE_Cita", response.data)

@@ -20,6 +20,7 @@
                         :Ubicacion ="Cita.Ubicacion"
                         :index="index"
                         :id="Cita._id.toString()"
+                        
                         @Delete="deleteTask"
                         @Change="changeStatus"
                         ></servComponent>

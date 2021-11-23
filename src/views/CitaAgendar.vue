@@ -50,7 +50,7 @@
       async getAllServ(){
 
         
-       
+        
         this.ServList = this.$store.getters["Servicios/getListaServicios"];
 
         if (this.ServList && this.ServList.length === 0 ) {
@@ -66,8 +66,11 @@
         const lugar = document.getElementById("Lugar").value
         const Hora = document.getElementById("Hora").value
         const Serv = document.getElementById("TaskStatus").value
-        console.log(lugar + Hora + Serv)
-        await this.$store.dispatch("Citas/addCita", {usuario: "usuario",  servicio: Serv, hora: Hora, ubicacion: lugar} );
+        const token = this.$store.getters["User/getToken"];
+        const user = this.$store.getters["User/getUser"];
+        console.log(lugar + Hora + Serv + user)
+       
+        await this.$store.dispatch("Citas/addCita", {usuario: user,  servicio: Serv, hora: Hora, ubicacion: lugar, token: token} );
 
 
       }
@@ -75,6 +78,11 @@
     
     created() {
       this.getAllServ()
+       const vueInstance = this;
+
+      setTimeout(function(){
+        vueInstance.Crear();
+      },5000);
       
     }
   }
