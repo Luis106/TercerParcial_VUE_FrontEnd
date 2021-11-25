@@ -87,7 +87,7 @@
 
       setTimeout(function(){
         vueInstance.Crear();
-      },5000);
+      },1000);
       
     }
   }
