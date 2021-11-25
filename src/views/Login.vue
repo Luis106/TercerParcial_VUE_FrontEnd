@@ -6,7 +6,7 @@
     <!-- Login Form -->
 
       <input type="text"  id="login" class="fadeIn second" name="login" placeholder="login">
-      <input type="text"  id="password" class="fadeIn third" name="login" placeholder="password">
+      <input type="password"  id="password" class="fadeIn third" name="login" placeholder="password">
       <input type="submit" v-on:click="MLogin" class="fadeIn fourth">
    
 
@@ -38,8 +38,6 @@
         console.log("Cambio")
 
       },
-
-
       async MLogin(){
 
         
@@ -62,14 +60,14 @@
 
           const Admin = this.$store.getters["User/getAdmin"];
           console.log("El usuario es " + Admin)
+          
           if(Admin){
              this.$router.push({path: "/Servicios"});
 
           }else{
               this.$router.push({path: "/VerServicios"});
           }
-         
-
+        
         }else{
          window.alert("Contraseña o usuario incorrecto");
         }
@@ -83,7 +81,7 @@
       },
       async getAuthToken(){
 
-        await this.$store.dispatch("tasks/getToken")
+        await this.$store.dispatch("User/getToken")
 
 
       }

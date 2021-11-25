@@ -2,6 +2,7 @@
 <!-- Section-->
   <section class="py-5">
       <div class="container px-4 px-lg-5 mt-5">
+         <input type="submit" v-on:click="Agendar" class="fadeIn fourth" value="Agendar Cita">
           <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
               
 
@@ -17,8 +18,9 @@
                   ></servComponentCli>
                 </li>
               </ul>
-                
+              
           </div>
+           
       </div>
   </section>
 
@@ -56,7 +58,7 @@ name: "Servicios",
     },
   methods: {
      async getAllServ(){
-       
+       console.log("Servicios Cliente")
         const ServList = this.$store.getters["Servicios/getListaServicios"];
 
 
@@ -68,57 +70,25 @@ name: "Servicios",
        
 
       },
-      async deleteTask(id, index){
-        console.log(index)
-        this.actualId = id
-        this.actualIndex = index
-        await this.$store.dispatch("Servicios/deleteServ", {Id: this.actualId,  Index: this.actualIndex} );
-       
-      },
-       changeStatus(name, id,index){
-        document.getElementById("CajaServ").value = name ;
-        //console.log(id)
-        this.actualId = id
-        this.actualIndex = index
-        //console.log(index)
-        
-
-
-        
-      },
-      async actualizar(){
-        if(this.actualId !== ""){
-
-          const name = document.getElementById("CajaServ").value;
-          await this.$store.dispatch("Servicios/ChangeServ", {Id: this.actualId,  Index: this.actualIndex, Name: name})
-          this.actualId = ""
-          this.actualIndex = ""
-
+      getUser(){
+      const user = this.$store.getters["User/getUser"];
+        console.log("El usuario es " + user)
+        if(!user){
+            console.log("User")
+            this.$router.push({path: "/"});
         }else{
-          window.alert("No se ha indicado servicio a modificar");
-
-
+          console.log("Evadidó")
         }
-      
-
-    
       },
-      async crear(){
-        const name = document.getElementById("CajaServNam").value;
-        if(name !== ""){
-          
-          await this.$store.dispatch("Servicios/addServ",  name )
+      Agendar(){
+        this.$router.push({path: "/Agendar"});
+      }
 
-        }else{
-           window.alert("No se posible crear servicios en blanco");
-        }
-       
-    
-      },
-
+     
      
   },
   created() {
+    this.getUser()
     this.getAllServ()
   },
   components: {

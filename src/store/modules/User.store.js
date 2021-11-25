@@ -8,7 +8,7 @@ import axios from "axios";
 	const getters = {
 
 		getUser: (state) => state.User,
-        getToken: (state) => state.Token,
+        gettoken: (state) => state.Token,
         getAdmin: (state) => state.Admin
 		
 	};

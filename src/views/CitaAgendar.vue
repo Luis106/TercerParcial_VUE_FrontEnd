@@ -1,7 +1,7 @@
 <template>
  <div class="wrapper fadeInDown">
 
-   
+       <input type="submit" v-on:click="ir" class="fadeIn fourth" value ="Volver">
 
   <div id="formContent">
     
@@ -66,13 +66,18 @@
         const lugar = document.getElementById("Lugar").value
         const Hora = document.getElementById("Hora").value
         const Serv = document.getElementById("TaskStatus").value
-        const token = this.$store.getters["User/getToken"];
+        const token = this.$store.getters["User/gettoken"];
+        
         const user = this.$store.getters["User/getUser"];
         console.log(lugar + Hora + Serv + user)
+        console.log("Token: " + token)
        
         await this.$store.dispatch("Citas/addCita", {usuario: user,  servicio: Serv, hora: Hora, ubicacion: lugar, token: token} );
 
 
+      },
+      ir(){
+         this.$router.push({path: "/VerServicios"});
       }
     },
     

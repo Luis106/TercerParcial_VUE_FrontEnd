@@ -1,12 +1,14 @@
 	import axios from "axios";
 
 	const state = {
-		ListaServicios: []
+		ListaServicios: [],
+		Token: String
 	};
 	const getters = {
 
 		getListaServicios: (state) => state.ListaServicios,
 		
+
 	};
 	const actions = {
 		async getAllServ({commit}) {
@@ -113,10 +115,8 @@
 	const mutations = {
 		SET_SERV(state, newServList) {
 			
-			state.ListaServicios =newServList;
-			console.log(state.ListaServicios)
-					
-				
+			state.ListaServicios = newServList;
+			console.log(state.ListaServicios)			
 		},
 		CHANGE_SERV(state, serv){
 				console.log(serv.Index)
@@ -135,6 +135,7 @@
 			
 		}
 	};
+
 	export default {
 		namespaced: true,
 		state : {

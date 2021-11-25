@@ -32,7 +32,8 @@
 		},
 		
 		async addCita({commit}, Cita){
-			console.log(Cita.usuario)
+			console.log("Store: "+Cita.token)
+
 			
 			if (Cita !== ""){
 				// add task to Citaer
